@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Yonike ❤️ Larmie</title>
+
+<style>
+body {
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  padding-top: 40px;
+}
+
+h1 {
+  color: #b30000;
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px rgba(255,255,255,0.6);
+}
+
+.gallery img {
+  width: 220px;
+  height: 220px;
+  border-radius: 20px;
+  margin: 12px;
+  object-fit: cover;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.07);
+}
+
+button {
+  padding: 15px 35px;
+  font-size: 20px;
+  margin: 15px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#yes {
+  background-color: red;
+  color: white;
+}
+
+#no {
+  background-color: white;
+  color: red;
+  position: relative;
+}
+
+/* Floating hearts animation */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 22px;
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<h1>❤️ Yonike, Will You Be Larmie’s Valentine? ❤️</h1>
+
+<div class="gallery">
+  <img src="photo1.jpg">
+  <img src="photo2.jpg">
+  <img src="photo3.jpg">
+</div>
+
+<button id="yes" onclick="yesClick()">Yes 💘</button>
+<button id="no" onmouseover="moveNo()">No 💔</button>
+
+<p id="message" style="font-size:22px; color:#800000;"></p>
+
+<script>
+function yesClick() {
+  document.getElementById("message").innerHTML = 
+  "YAYYYY 😍❤️ Yonike, I love you! You just made my heart so happy 💖";
+
+  // Create floating hearts
+  setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }, 300);
+}
+
+function noClick() {
+  document.getElementById("message").innerHTML = 
+  "Try again 😏 You’re meant to say YES, my love 💘";
+}
+
+// Make NO button run away
+function moveNo() {
+  let noBtn = document.getElementById("no");
+  noBtn.style.left = Math.random() * 200 - 100 + "px";
+  noBtn.style.top = Math.random() * 100 - 50 + "px";
+}
+
+window.addEventListener('click', function() {
+  document.getElementById("bgMusic").play();
+}, { once: true });
+
+</script>
+
+</body>
+</html>
